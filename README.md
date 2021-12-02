@@ -1,3 +1,2 @@
 # cattohook
-not to be confused with cattoware. 
-cattoware: https://discord.gg/dB5Pnb6grU
+not to be confused with cattoware.
