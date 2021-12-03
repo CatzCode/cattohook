@@ -36,17 +36,17 @@ assert(getgenv().cv_settings, "could not load settings")
 
 function esp(v)
     -- box --
+    local BOutline = Drawing.new("Square")
+    BoxOutline.Visible = false
+    BoxOutline.Color = Color3.new(0,0,0)
+    BoxOutline.Thickness = 3
+    BoxOutline.Transparency = 1
+    BoxOutline.Filled = false
+
     local Box = Drawing.new("Square")
     Box.Visible = false
-    Box.Color = Color3.fromRGB(255, 255, 255)
+    Box.Color = Color3.new(1,1,1)
     Box.Thickness = 1
-    Box.Transparency = 1
-    Box.Filled = false
-
-    local BOutline = Drawing.new("Square")
-    Box.Visible = false
-    Box.Color = Color3.fromRGB(0, 0, 0)
-    Box.Thickness = 3
     Box.Transparency = 1
     Box.Filled = false
 
