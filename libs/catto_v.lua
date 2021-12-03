@@ -1,9 +1,3 @@
--- cattohook // catto_v.lua \\ 12/2/21 --
-
--- made by false --
-
-print("using cattohook visuals library")
-
 local lplr = game.Players.LocalPlayer
 local camera = game:GetService("Workspace").CurrentCamera
 local CurrentCamera = workspace.CurrentCamera
@@ -24,7 +18,7 @@ getgenv().cv_settings = {
         unlocktracers = false,
         color = Color3.fromRGB(255, 255, 255)
     },
-    names = {
+    name = {
         enabled = false,
         outline = false,
         font = "Monospace",
@@ -43,25 +37,25 @@ assert(getgenv().cv_settings, "could not load settings")
 function esp(v)
     -- box --
     local Box = Drawing.new("Square")
-    Box.Visible = false,
+    Box.Visible = false
     Box.Color = Color3.fromRGB(255, 255, 255)
     Box.Thickness = 1
     Box.Transparency = 1
     Box.Filled = false
 
     local BOutline = Drawing.new("Square")
-    Box.Visible = false,
+    Box.Visible = false
     Box.Color = Color3.fromRGB(0, 0, 0)
     Box.Thickness = 3
     Box.Transparency = 1
     Box.Filled = false
 
     local HBOutline = Drawing.new("Square")
-    HealthBarOutline.Thickness = 3
-    HealthBarOutline.Filled = false
-    HealthBarOutline.Color = Color3.new(0,0,0)
-    HealthBarOutline.Transparency = 1
-    HealthBarOutline.Visible = false
+    HBOutline.Thickness = 3
+    HBOutline.Filled = false
+    HBOutline.Color = Color3.new(0,0,0)
+    HBOutline.Transparency = 1
+    HBOutline.Visible = false
 
     local HealthBar = Drawing.new("Square")
     HealthBar.Thickness = 1
@@ -108,14 +102,15 @@ function esp(v)
                     Box.Position = Vector2.new(RootPosition.X - Box.Size.X / 2, RootPosition.Y - Box.Size.Y / 2)
                     Box.Visible = cv_settings.box.enabled
                     if not cv_settings.misc.useteamcolors then
-                        Box.Color = v.TeamColor
+                        local color = v.TeamColor
+                        Box.Color = color.Color
                     else
                         Box.Color = cv_settings.box.color1
                     end
                         
-                    HealthBarOutline.Size = Vector2.new(2, HeadPosition.Y - LegPosition.Y)
-                    HealthBarOutline.Position = BoxOutline.Position - Vector2.new(6,0)
-                    HealthBarOutline.Visible = cv_settings.box.outline
+                    HBOutline.Size = Vector2.new(2, HeadPosition.Y - LegPosition.Y)
+                    HBOutline.Position = HBOutline.Position - Vector2.new(6,0)
+                    HBOutline.Visible = cv_settings.box.outline
     
                     HealthBar.Size = Vector2.new(2, (HeadPosition.Y - LegPosition.Y) / (v.Character.Humanoid.MaxHealth / math.clamp(v.Character.Humanoid.Health, 0,v.Character.Humanoid.MaxHealth)))
                     HealthBar.Position = Vector2.new(Box.Position.X - 6, Box.Position.Y + (1 / HealthBar.Size.Y))
@@ -124,7 +119,7 @@ function esp(v)
                 else
                     BOutline.Visible = false
                     Box.Visible = false
-                    HealthBarOutline.Visible = false
+                    HBOutline.Visible = false
                     HealthBar.Visible = false
                 end
                 if cv_settings.tracer.enabled then
@@ -134,8 +129,13 @@ function esp(v)
                         Tracer.From = Vector2.new(camera.ViewportSize.X / 2, camera.ViewportSize.Y / 1)
                     end
                     Tracer.To = Vector2.new(Vector.X, Vector.Y)
-                    Tracer.Color = cv_settings.tracer.color
                     Tracer.Visible = cv_settings.tracer.enabled
+                    if not cv_settings.misc.useteamcolors then
+                        local color = v.TeamColor
+                        Tracer.Color = color.Color
+                    else
+                        Tracer.Color = cv_settings.tracer.color
+                    end
                 else
                     Tracer.Visible = false
                 end
@@ -144,7 +144,12 @@ function esp(v)
                     Name.Position = Vector2.new(workspace.Camera:WorldToViewportPoint(v.Character.Head.Position).X, workspace.Camera:WorldToViewportPoint(v.Character.Head.Position).Y - 30)
                     Name.Visible = true
                     Name.Size = cv_settings.name.size
-                    Name.Color = cv_settings.name.color
+                    if not cv_settings.misc.useteamcolors then
+                        local color = v.TeamColor
+                        Name.Color = color.Color
+                    else
+                        Name.Color = cv_settings.name.color
+                    end
                     Name.Outline = cv_settings.name.outline
                     if esp_settings.font == "UI" then
                         Name.Font = 0
@@ -161,7 +166,7 @@ function esp(v)
             else
                 BOutline.Visible = false
                 Box.Visible = false
-                HealthBarOutline.Visible = false
+                HBOutline.Visible = false
                 HealthBar.Visible = false
                 Tracer.Visible = false
                 Name.Visible = false
@@ -169,7 +174,7 @@ function esp(v)
         else
             BOutline.Visible = false
             Box.Visible = false
-            HealthBarOutline.Visible = false
+            HBOutline.Visible = false
             HealthBar.Visible = false
             Tracer.Visible = false
             Name.Visible = false
