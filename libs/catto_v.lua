@@ -4,8 +4,6 @@
 
 print("using cattohook visuals library")
 
-
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/CatzCode/cattohook/main/libs/catto_ui.lua"))()
 local lplr = game.Players.LocalPlayer
 local camera = game:GetService("Workspace").CurrentCamera
 local CurrentCamera = workspace.CurrentCamera
