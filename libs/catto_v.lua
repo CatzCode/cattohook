@@ -1,9 +1,17 @@
+-- cattohook // catto_v.lua \\ 12/2/21 --
+
+-- made by false --
+
+print("using cattohook visuals library")
+
+
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/CatzCode/cattohook/main/libs/catto_ui.lua"))()
 local lplr = game.Players.LocalPlayer
 local camera = game:GetService("Workspace").CurrentCamera
 local CurrentCamera = workspace.CurrentCamera
 local worldToViewportPoint = CurrentCamera.worldToViewportPoint
 local mouse = game.Players.LocalPlayer:GetMouse()
-local UserInput = game:GetService("UserInputService") 
+local UserInput = game:GetService("UserInputService")
 
 getgenv().cv_settings = {
     box = {
@@ -77,7 +85,7 @@ function esp(v)
     Name.Transparency = 1
     Name.Visible = false
     Name.Color = Color3.new(1,1,1)
-    Name.Size = 12
+    Name.Size = 16
     Name.Center = true
     Name.Outline = false
     Name.Text = "name [100/100]"
@@ -140,7 +148,7 @@ function esp(v)
                     Tracer.Visible = false
                 end
                 if cv_settings.name.enabled then
-                    Name.Text = tostring(v.Name).. "[".. tostring(v.Humanoid.Health) .. "/" .. tostring(v.Humanoid.MaxHealth) "]"
+                    Name.Text = tostring(v.Name).. " [" .. tostring(math.floor(v.Character.Humanoid.Health + 0.5)) .. "/" .. tostring(v.Character.Humanoid.MaxHealth) .. "]"
                     Name.Position = Vector2.new(workspace.Camera:WorldToViewportPoint(v.Character.Head.Position).X, workspace.Camera:WorldToViewportPoint(v.Character.Head.Position).Y - 30)
                     Name.Visible = true
                     Name.Size = cv_settings.name.size
