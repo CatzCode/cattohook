@@ -2141,3 +2141,5 @@ function Vanilla:UIIntro()
 end
 
 Vanilla:UIIntro()
+
+return library;
