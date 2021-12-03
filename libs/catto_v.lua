@@ -3,7 +3,7 @@ local camera = game:GetService("Workspace").CurrentCamera
 local CurrentCamera = workspace.CurrentCamera
 local worldToViewportPoint = CurrentCamera.worldToViewportPoint
 local mouse = game.Players.LocalPlayer:GetMouse()
-local UserInput = game:GetService("UserInputService")
+local UserInput = game:GetService("UserInputService") 
 
 getgenv().cv_settings = {
     box = {
