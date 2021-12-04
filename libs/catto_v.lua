@@ -27,7 +27,6 @@ getgenv().cv_settings = {
     name = {
         enabled = false,
         outline = false,
-        font = "Monospace",
         size = 16,
         color = Color3.fromRGB(255, 255, 255)
     },
@@ -86,6 +85,7 @@ function esp(v)
     Name.Size = 16
     Name.Center = true
     Name.Outline = false
+    Name.Font = 0
     Name.Text = "name [100/100]"
 
     game:GetService("RunService").RenderStepped:Connect(function()
@@ -157,15 +157,6 @@ function esp(v)
                         Name.Color = cv_settings.name.color
                     end
                     Name.Outline = cv_settings.name.outline
-                    if esp_settings.font == "UI" then
-                        Name.Font = 0
-                    elseif esp_settings.font == "System" then
-                        Name.Font = 1
-                    elseif esp_settings.font == "Plex" then
-                        Name.Font = 2
-                    elseif esp_settings.font == "Monospace" then
-                        Name.Font = 3
-                    end
                 else
                     Name.Visible = false
                 end
