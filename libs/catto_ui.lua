@@ -2125,3 +2125,5 @@ function Vanilla:UIIntro()
     repeat wait() until IntroFade.BackgroundTransparency == 1
     IntroFade:Destroy()
 end
+
+return Library;
