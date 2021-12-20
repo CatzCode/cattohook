@@ -522,7 +522,7 @@ library.new = function(title)
                         sliderval.Text = tostring(value)
                         pcall(callback, value)
                     end
-    
+                    
                     function Refresh()
                         local mousePos = camera:WorldToViewportPoint(mouse.Hit.p)
                         local percent = math.clamp(mousePos.X - slidermain.AbsolutePosition.X, 0, sliderback.AbsoluteSize.X) / sliderback.AbsoluteSize.X
@@ -530,6 +530,10 @@ library.new = function(title)
                         value = math.clamp(value, min, max)
                         Set(value)
                     end
+            
+                    Set(value)
+                    Refresh()
+                    
     
                     slidermain.InputBegan:Connect(function(input)
                         if input.UserInputType == Enum.UserInputType.MouseButton1 then
