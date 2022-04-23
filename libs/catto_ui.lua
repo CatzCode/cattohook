@@ -126,7 +126,7 @@ function library:CreateWatermark(name, position)
     watermark.label.Font = library.theme.font
     watermark.label.ZIndex = 6
     watermark.label.Visible = watermark.Visible
-    watermark.label.Text = watermark.text
+    watermark.label.Text = name
     watermark.label.TextColor3 = Color3.fromRGB(255, 255, 255)
     watermark.label.TextSize = 15
     watermark.label.TextStrokeTransparency = 0.000
